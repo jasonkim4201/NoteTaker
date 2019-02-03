@@ -5,6 +5,10 @@ body {
   background-size: cover;
 }
 
+.delete { 
+  cursor: pointer; 
+}
+
 #otherBG{
   background: url(../images/legal-pad-edited.png);
 }
@@ -13,7 +17,3 @@ body {
   margin-top: 25%;
 }
 
-/* #noteCard {
- 
-}
- */
