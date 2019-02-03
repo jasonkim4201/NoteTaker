@@ -1,3 +1,19 @@
 body {
+  background: url(../images/elon_musk_mars_cropped-991x743.jpg); /* credits to Shawn Wylde/American AF */
+  background-position: center;   /*  https://www.teslarati.com/tesla-elon-musk-illustration-aaf-shawn-wylde-roadster-pre-order/ */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#otherBG{
   background: url(../images/legal-pad-edited.png);
 }
+
+#fakeJumbotron{
+  margin-top: 25%;
+}
+
+/* #noteCard {
+ 
+}
+ */

@@ -9,13 +9,12 @@
 <link rel="stylesheet" href="./assets/css/style.css">
 <title>Note Taker</title>
 </head>
-<body>
+<body id="otherBG">
 
 <h1>note taking page</h1>
 <div class="container">
-  <div class="card">
-    <div class="card-body">
-
+  <div class="card w-50 mx-auto">
+    <div class="card-body" id ="noteCard">
       <form>
       <div class="form-group">
         <label for ="titleFormInput" class="font-weight-bold">Title</label>
@@ -24,16 +23,124 @@
 
       <div class="form-group">
         <label for="noteTextarea" class="font-weight-bold">Add notes here!</label>
-          <textarea class="form-control" id="noteTextarea" rows="10"></textarea>
+          <textarea class="form-control" id="noteTextArea" rows="5"></textarea>
       </div>
-      <button class="btn btn-info float-right">Save note!</button>
+      <button type="submit" class="btn btn-info float-right" id="noteSubmit">Save note!</button>
       </form>
 
     </div>
   </div>
 
-<div id="savedNotes">placeholder</div>
+<div class="container-fluid">
+  <div id="savedNotes">
+    <div class="row" id="stickyNotes"></div>
+  </div>
+</div>
 
+
+
+</div>
+
+<!-- Do this dymanically -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3">
+        <div class="card my-2 bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+  </div>
 </div>
 
 
@@ -51,5 +158,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="./assets/JAVASCRIPT.js"></script>
+
 </body>
 </html>

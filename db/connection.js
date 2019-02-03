@@ -11,7 +11,7 @@ if (process.env.JAWSDB_URL) {
     host: "localhost",
     user: process.env.user,
     password: process.env.pass,
-    database: ""
+    database: "notetaker_db"
   });
 }
 
