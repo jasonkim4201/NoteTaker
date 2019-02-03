@@ -41,10 +41,11 @@ app.get("/api/typedNotes/", (req, res) => {
 
 });
 
+
 //app.post to have data show up
 app.post("/api/typedNotes", (req, res) => {
   const query = connection.query("SELECT * FROM notes", (error, notesPosted) => {
-    console.log("req.body:", req.body);
+    console.log("req.body from POST:", req.body);
     
     if (error) {
       console.log(error);
@@ -62,9 +63,15 @@ app.post("/api/typedNotes", (req, res) => {
   });
 });
 
-
-
-
+app.delete("/api/typedNotes", (req, res) => {
+  const query = connection.query("DELETE FROM notes WHERE ?", req.body, (error, result) => {
+    if (error) {
+      console.log(error);
+      return res.status(400).json(error);
+    }
+    res.json(result);
+  });
+});
 
 // wildcard route if somehow no routes are matched
 app.get("*", (req, res) => {
