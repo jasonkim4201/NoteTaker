@@ -28,6 +28,8 @@ $(document).ready(function(){
 
      $(".delete").on("click", function() {
        //delete from database
+      
+      console.log($(this).closest("p"));
       $(this).closest(".col-3").remove();
       
      })
@@ -46,7 +48,6 @@ $(document).ready(function(){
     };
     console.log(noteTaken);
     //on click make ajax call to post in datatbase
-
     $.ajax({
       url: "/api/typedNotes",
       method: "POST",
@@ -55,15 +56,11 @@ $(document).ready(function(){
       console.log(response);
     $("#inputNoteTitle").val("");
     $("#noteTextArea").val("");
-
     });
-  
-
 
     $.ajax({
       url: "/api/typedNotes",
       method: "GET",
-      data: noteTaken
     }).then(reminder => {
       console.log(reminder);
         //my "solution" to showing the most recent note posted without refreshing.      
@@ -86,37 +83,11 @@ $(document).ready(function(){
         $(stickyNoteTitle).html(`${reminder[i].title} <span class="float-right delete" id =${i}>🗑️</span>`);
         $(stickyNoteText).text(reminder[i].note_text);
   
-       $(".delete").on("click", function() {
-         //delete from database
-        $(this).closest(".col-3").remove();
-        
-       })
-  
       } //end of loop bracket
   
     })// end of GET ajax
-
-
-
-
-
-
-
-
-
+    
   }); //end on on click
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

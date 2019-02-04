@@ -63,6 +63,7 @@ app.post("/api/typedNotes", (req, res) => {
   });
 });
 
+// is this how i delete stuf??????
 app.delete("/api/typedNotes", (req, res) => {
   const query = connection.query("DELETE FROM notes WHERE ?", req.body, (error, result) => {
     if (error) {
