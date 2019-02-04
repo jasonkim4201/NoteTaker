@@ -64,14 +64,24 @@ app.post("/api/typedNotes", (req, res) => {
 });
 
 // is this how i delete stuf??????
-app.delete("/api/typedNotes", (req, res) => {
-  const query = connection.query("DELETE FROM notes WHERE ?", req.body, (error, result) => {
-    if (error) {
+app.delete("/api/typedNotes/:id", (req, res) => {
+  /*
+    req.params => {
+      id: 1
+    }
+  */
+
+  const query = connection.query("DELETE FROM notes WHERE ?", req.params, (error, noteDeleted) => {
+    if (error){
       console.log(error);
       return res.status(400).json(error);
     }
-    res.json(result);
+    console.log(req.body);
+    console.log(req.params.id);
+    res.json(noteDeleted);
+
   });
+  console.log(query.sql);
 });
 
 // wildcard route if somehow no routes are matched

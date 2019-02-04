@@ -2,7 +2,7 @@ $(document).ready(function(){
   console.log("page is ready"); 
 
   $.ajax({
-    url: "/api/typedNotes",
+    url: "/api/typedNotes/",
     method: "GET",
   }).then(reminder => {
     console.log(reminder);
@@ -23,20 +23,49 @@ $(document).ready(function(){
         stickyNoteText
       );
   
+      
       $(stickyNoteTitle).html(`${reminder[i].title} <span class="float-right delete" id =${i}>🗑️</span>`);
+      $(stickyNoteTitle).data("data-reminder", reminder[i]);
+      //console.log(reminder[i]);
+
       $(stickyNoteText).text(reminder[i].note_text);
 
-     $(".delete").on("click", function() {
-       //delete from database
-      
-      console.log($(this).closest("p"));
-      $(this).closest(".col-3").remove();
-      
-     })
-
+    
+     
     } //end of loop bracket
 
-  })// end of GET ajax
+  });// end of GET ajax
+
+//event listener for a click on delete using card title for now
+$(document).on("click",".card-title", function(){
+    const data = $(this).data("data-reminder");
+    console.log("the things you are deleting");
+
+    console.log(data.id);
+    console.log(data.title);
+    console.log(data.note_text);
+    $.ajax({
+      url: `/api/typedNotes/${data.id}`,
+      method: "DELETE"
+    }).then(deletedNote => {
+      console.log("note should be deleted.");
+    //display the data
+    
+    console.log(data);
+
+    $(this).closest(".col-3").remove();
+      
+    })
+
+    //display the data
+    
+    
+
+    $(this).closest(".col-3").remove();
+    
+   });
+
+
 
 
   $("#noteSubmit").on("click", function(event) {
@@ -82,13 +111,17 @@ $(document).ready(function(){
     
         $(stickyNoteTitle).html(`${reminder[i].title} <span class="float-right delete" id =${i}>🗑️</span>`);
         $(stickyNoteText).text(reminder[i].note_text);
+
+        /* $(document).on("click","float-right delete", function() {
+  
+          $(this).closest(".col-3").remove();
+          
+         }); */
   
       } //end of loop bracket
   
-    })// end of GET ajax
+    });// end of GET ajax
     
   }); //end on on click
 
-
-
-}); //end script
+}); //end of .ready
