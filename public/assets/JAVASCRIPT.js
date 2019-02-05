@@ -6,7 +6,7 @@ $(document).ready(function(){
     method: "GET",
   }).then(reminder => {
     console.log(reminder);
-
+  
     for (var i = 0; i < reminder.length; i++) {
       const noteCol = $(`<div class="col-3">`);
       const stickyNote = $(`<div class="card my-2 bg-warning" style="width: 18rem;">`);
@@ -22,26 +22,23 @@ $(document).ready(function(){
         stickyNoteTitle,
         stickyNoteText
       );
-  
+      console.log(reminder[i].id);
       
-      $(stickyNoteTitle).html(`<div class= "stickyNoteTitle">${reminder[i].title} <span class="float-right delete" id =${i}>🗑️</span></div>`);
-      $(stickyNoteTitle).data("data-reminder", reminder[i]);
+      $(stickyNoteTitle).html(`<div>${reminder[i].title} <span class="float-right delete" id=${reminder[i].id}>🗑️</span></div>`);
 
+      $(stickyNoteTitle).data("data-reminder", reminder[i]);
       $(stickyNoteText).text(reminder[i].note_text);
 
-    
-     
     } //end of loop bracket
 
   });// end of GET ajax
 
 //event listener for a click on delete using card title for now
-
-
 $(document).on("click",".card-title", function(){
     const data = $(this).data("data-reminder");
-    console.log("the things you are deleting");
-
+    console.log(data);
+    console.log(`id #: ${data.id}`);
+  
     $.ajax({
       url: `/api/typedNotes/${data.id}`,
       method: "DELETE"
@@ -56,9 +53,6 @@ $(document).on("click",".card-title", function(){
     });
 
    });
-
-
-
 
   $("#noteSubmit").on("click", function(event) {
     event.preventDefault();
@@ -79,12 +73,13 @@ $(document).on("click",".card-title", function(){
     $("#noteTextArea").val("");
     });
 
+    //my "solution" to showing & deleting the most recent note posted without refreshing. yes, it's essentially the same code copied from above.
     $.ajax({
       url: "/api/typedNotes",
       method: "GET",
     }).then(reminder => {
       console.log(reminder);
-        //my "solution" to showing the most recent note posted without refreshing.      
+           
       for (var i = (reminder.length - 1); i < reminder.length; i++) {
         const noteCol = $(`<div class="col-3">`);
         const stickyNote = $(`<div class="card my-2 bg-warning" style="width: 18rem;">`);
@@ -101,17 +96,32 @@ $(document).on("click",".card-title", function(){
           stickyNoteText
         );
     
-        $(stickyNoteTitle).html(`${reminder[i].title} <span class="float-right delete" id =${i}>🗑️</span>`);
+        $(stickyNoteTitle).html(`<div>${reminder[i].title} <span class="float-right delete" id=${reminder[i].id}>🗑️</span></div>`);
+        $(stickyNoteTitle).data("data-reminder", reminder[i]);
         $(stickyNoteText).text(reminder[i].note_text);
-
-        $(document).on("click","float-right delete", function() {
-  
-          $(this).closest(".col-3").remove();
-          
-         });
-  
       } //end of loop bracket
   
+
+      $(document).on("click",".card-title", function(){
+        const data = $(this).data("data-reminder");
+        console.log(data);
+        console.log(`id #: ${data.id}`);
+      
+        $.ajax({
+          url: `/api/typedNotes/${data.id}`,
+          method: "DELETE"
+        }).then(deletedNote => {
+          console.log("note should be deleted.");
+        //display the data
+        console.log(data);
+    
+        $(this).closest(".col-3").remove();
+          
+        });
+    
+       });
+
+
     });// end of GET ajax
     
   }); //end on on click
