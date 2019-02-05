@@ -24,9 +24,8 @@ $(document).ready(function(){
       );
   
       
-      $(stickyNoteTitle).html(`${reminder[i].title} <span class="float-right delete" id =${i}>🗑️</span>`);
+      $(stickyNoteTitle).html(`<div class= "stickyNoteTitle">${reminder[i].title} <span class="float-right delete" id =${i}>🗑️</span></div>`);
       $(stickyNoteTitle).data("data-reminder", reminder[i]);
-      //console.log(reminder[i]);
 
       $(stickyNoteText).text(reminder[i].note_text);
 
@@ -37,13 +36,12 @@ $(document).ready(function(){
   });// end of GET ajax
 
 //event listener for a click on delete using card title for now
+
+
 $(document).on("click",".card-title", function(){
     const data = $(this).data("data-reminder");
     console.log("the things you are deleting");
 
-    console.log(data.id);
-    console.log(data.title);
-    console.log(data.note_text);
     $.ajax({
       url: `/api/typedNotes/${data.id}`,
       method: "DELETE"
@@ -55,14 +53,8 @@ $(document).on("click",".card-title", function(){
 
     $(this).closest(".col-3").remove();
       
-    })
+    });
 
-    //display the data
-    
-    
-
-    $(this).closest(".col-3").remove();
-    
    });
 
 
@@ -112,11 +104,11 @@ $(document).on("click",".card-title", function(){
         $(stickyNoteTitle).html(`${reminder[i].title} <span class="float-right delete" id =${i}>🗑️</span>`);
         $(stickyNoteText).text(reminder[i].note_text);
 
-        /* $(document).on("click","float-right delete", function() {
+        $(document).on("click","float-right delete", function() {
   
           $(this).closest(".col-3").remove();
           
-         }); */
+         });
   
       } //end of loop bracket
   
